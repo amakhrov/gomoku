@@ -6,7 +6,7 @@ import AppContainer from './containers/AppContainer'
 // ========================================================
 // Store Instantiation
 // ========================================================
-const initialState = window.___INITIAL_STATE__
+const initialState = localStorage.getItem('gomoku.state') || {}
 const store = createStore(initialState)
 
 // ========================================================

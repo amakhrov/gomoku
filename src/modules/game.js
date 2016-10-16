@@ -43,7 +43,7 @@ const ACTION_HANDLERS = {
 }
 
 const defaultFieldSize = 20
-const initialState = resetGame({
+export const initialState = resetGame({
   players: [
     {name: 'Pasha', symbol: SYMBOL_X},
     {name: 'Anti', symbol: SYMBOL_O},

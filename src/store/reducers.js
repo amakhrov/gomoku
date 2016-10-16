@@ -1,7 +1,8 @@
+import { combineReducers } from 'redux'
 import gameReducer from '../modules/game'
 
-export const makeRootReducer = () => {
-  return gameReducer
+export default function makeRootReducer () {
+  return combineReducers({
+    game: gameReducer
+  })
 }
-
-export default makeRootReducer
