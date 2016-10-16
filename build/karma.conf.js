@@ -6,6 +6,7 @@ const debug = require('debug')('app:karma')
 debug('Creating configuration.')
 const karmaConfig = {
   basePath : '../', // project root in relation to bin/karma.js
+  plugins: ['karma-coverage', 'karma-mocha', 'karma-mocha-reporter', 'karma-phantomjs-launcher', 'karma-webpack-with-fast-source-maps'],
   files    : [
     {
       pattern  : `./${config.dir_test}/test-bundler.js`,
