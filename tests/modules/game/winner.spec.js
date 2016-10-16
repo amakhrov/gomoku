@@ -71,4 +71,5 @@ describe('getWinningCells', () => {
     let expected = [ [2, 0], [1, 1] ]
     expect(getWinningCells(rows, 2, 1, 1)).to.deep.equal(expected)
   })
+
 })

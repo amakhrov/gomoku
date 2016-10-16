@@ -1,6 +1,6 @@
 import {
   selectCell,
-  default as gameReducer
+  gameReducer
 } from 'modules/game'
 
 import {SYMBOL_X, SYMBOL_O} from 'modules/game/constants'
@@ -25,6 +25,10 @@ describe('(Redux Module) Game', () => {
 
     beforeEach(() => {
       state = gameReducer(undefined, {})
+      state = {
+        ...state,
+        players: [{symbol: SYMBOL_X}, {symbol: SYMBOL_O}]
+      }
     })
 
     it('Should not modify state if the cell is already occupied', () => {
@@ -69,9 +73,10 @@ describe('(Redux Module) Game', () => {
 
     beforeEach(() => {
       state = gameReducer(undefined, {})
+      let players = [{symbol: SYMBOL_X}, {symbol: SYMBOL_O}]
       let rows = helpers.createRows(3)
       rows = helpers.setCell(rows, 0, 0, SYMBOL_X)
-      state = {...state, rows, lineSizeToWin: 2}
+      state = {...state, players, rows, lineSizeToWin: 2}
     })
 
     it('Should mark the winning line', () => {
