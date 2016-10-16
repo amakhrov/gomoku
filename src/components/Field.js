@@ -7,6 +7,7 @@ export const Field = (props) => {
   const {rows, winningCells} = props
   const cellsInRow = rows[0].length
   const size = (100 / cellsInRow) + '%'
+  const padding = `calc(-2px + ${size})`
 
   let winning = {}
   if (winningCells) {
@@ -29,7 +30,7 @@ export const Field = (props) => {
             data-isWinning={isWinning(i, j)}
             style={{
               width: size,
-              paddingBottom: size
+              paddingBottom: padding
             }}
           />
         })}
