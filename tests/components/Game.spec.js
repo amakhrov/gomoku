@@ -1,6 +1,6 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
-import { Counter } from 'routes/Game/components/Game'
+import { Counter } from 'components/Game'
 import { shallow } from 'enzyme'
 
 xdescribe('(Component) Game', () => {

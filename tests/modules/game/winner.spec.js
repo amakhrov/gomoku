@@ -1,10 +1,10 @@
-import getWinningCells from 'routes/Game/modules/game/winner'
+import getWinningCells from 'modules/game/winner'
 
 import {
   SYMBOL_X,
   SYMBOL_O,
   SYMBOL_EMPTY,
-} from 'routes/Game/modules/game/constants'
+} from 'modules/game/constants'
 
 
 function createRows(stringLines) {

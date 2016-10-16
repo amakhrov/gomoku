@@ -1,10 +1,10 @@
-import helpers from 'routes/Game/modules/game/rows-helpers'
+import helpers from 'modules/game/rows-helpers'
 
 import {
   SYMBOL_X,
   SYMBOL_O,
   SYMBOL_EMPTY,
-} from 'routes/Game/modules/game/constants'
+} from 'modules/game/constants'
 
 function createRows(stringLines) {
   const mapping = {

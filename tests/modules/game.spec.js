@@ -1,10 +1,10 @@
 import {
   selectCell,
   default as gameReducer
-} from 'routes/Game/modules/game'
+} from 'modules/game'
 
-import {SYMBOL_X, SYMBOL_O} from 'routes/Game/modules/game/constants'
-import helpers from 'routes/Game/modules/game/rows-helpers'
+import {SYMBOL_X, SYMBOL_O} from 'modules/game/constants'
+import helpers from 'modules/game/rows-helpers'
 
 describe('(Redux Module) Game', () => {
   describe('(Reducer) Game', () => {

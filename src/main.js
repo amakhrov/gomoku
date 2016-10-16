@@ -14,11 +14,9 @@ const store = createStore(initialState)
 // ========================================================
 const MOUNT_NODE = document.getElementById('root')
 
-let render = () => {
-  const routes = require('./routes/index').default(store)
-
+let render = (Container = AppContainer) => {
   ReactDOM.render(
-    <AppContainer store={store} routes={routes} />,
+    <Container store={store} />,
     MOUNT_NODE
   )
 }
@@ -44,19 +42,20 @@ if (__DEV__) {
     }
 
     // Wrap render in try/catch
-    render = () => {
+    render = (Container) => {
       try {
-        renderApp()
+        renderApp(Container)
       } catch (error) {
         renderError(error)
       }
     }
 
     // Setup hot module replacement
-    module.hot.accept('./routes/index', () =>
+    module.hot.accept('./containers/AppContainer', () =>
       setImmediate(() => {
+        const Container = require('./containers/AppContainer').default
         ReactDOM.unmountComponentAtNode(MOUNT_NODE)
-        render()
+        render(Container)
       })
     )
   }

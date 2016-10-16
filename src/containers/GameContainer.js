@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { increment, doubleAsync } from '../modules/game'
+import { start, selectCell } from '../modules/game'
 
 /*  This is a container component. Notice it does not contain any JSX,
     nor does it import React. This component is **only** responsible for
@@ -13,7 +13,7 @@ import Game from '../components/Game'
     implementing our wrapper around increment; the component doesn't care   */
 
 const mapDispatchToProps = {
-  selectCell : () => increment(1),
+  selectCell,
   start
 }
 
