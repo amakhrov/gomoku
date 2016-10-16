@@ -1,10 +1,12 @@
 import React from 'react'
 import Field from './Field'
+import Status from './Status'
 
 export const Game = (props) => {
   return   <div style={{ margin: '0 auto' }} >
+    <Status players={props.state.players} activePlayer={props.state.activePlayer} />
     <button className='btn btn-default' onClick={props.start}>
-      Start
+      Restart
     </button>
     <Field rows={props.state.rows} winningCells={props.state.winningCells} selectCell={props.selectCell}/>
   </div>

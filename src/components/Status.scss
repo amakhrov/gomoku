@@ -1,0 +1,12 @@
+:local(.player) {
+  display: inline-block;
+  width: 100px;
+
+  &[data-isActive=false] {
+    color: grey;
+  }
+
+  &[data-isActive=true] {
+    font-weight: bold;
+  }
+}
