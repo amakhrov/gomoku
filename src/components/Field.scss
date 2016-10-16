@@ -1,0 +1,33 @@
+:local(.row) {
+  display: flex;
+}
+
+:local(.cell) {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+
+  &::after {
+    content: "";
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  &[data-symbol="X"]::after {
+    content: "x";
+  }
+
+  &[data-symbol="O"]::after {
+    content: "o";
+  }
+}
