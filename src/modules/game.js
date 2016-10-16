@@ -1,3 +1,4 @@
+import undoable from 'redux-undo';
 import {SYMBOL_X, SYMBOL_O} from './game/constants'
 import helpers from './game/rows-helpers'
 import getWinningCells from './game/winner'
@@ -64,8 +65,12 @@ function resetGame(state, fieldSize) {
   }
 }
 
-export default function gameReducer (state = initialState, action) {
+export function gameReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
 
   return handler ? handler(state, action) : state
 }
+
+export default undoable(gameReducer, {
+  initTypes: [GAME_START]
+})
