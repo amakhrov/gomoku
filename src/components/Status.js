@@ -26,15 +26,15 @@ export const Status = (props) => (
         isWinner: isWinner,
         isActive: isActive
       }
-      return <Player {...playerProps} />
+      return <Player {...playerProps} key={i} />
     })}
   </div>
 )
 
 Status.propTypes = {
-  players: React.PropTypes.object.isRequired,
+  players: React.PropTypes.array.isRequired,
   activePlayer: React.PropTypes.number.isRequired,
-  winningPlayer: React.PropTypes.number.isRequired,
+  winningPlayer: React.PropTypes.number,
 }
 
 export default Status
