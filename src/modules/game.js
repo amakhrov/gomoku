@@ -35,10 +35,12 @@ const ACTION_HANDLERS = {
 
     let currentSymbol = state.players[state.activePlayer].symbol
     rows = helpers.setCell(rows, row, column, currentSymbol)
-    let activePlayer = (state.activePlayer + 1) % state.players.length
-    let winningCells = getWinningCells(rows, state.lineSizeToWin, row, column)
 
-    return {...state, rows, activePlayer, winningCells}
+    let winningCells = getWinningCells(rows, state.lineSizeToWin, row, column)
+    let winningPlayer = winningCells ? state.activePlayer : null
+    let activePlayer = (state.activePlayer + 1) % state.players.length
+
+    return {...state, rows, activePlayer, winningCells, winningPlayer}
   },
 
   [GAME_START]: (state, action) => resetGame(state, state.rows.length)

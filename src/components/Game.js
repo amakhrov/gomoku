@@ -4,7 +4,7 @@ import Status from './Status'
 
 export const Game = (props) => {
   return   <div style={{ margin: '0 auto' }} >
-    <Status players={props.state.players} activePlayer={props.state.activePlayer} />
+    <Status {...props.state} />
     <button className='btn btn-default' onClick={props.start}>
       Restart
     </button>

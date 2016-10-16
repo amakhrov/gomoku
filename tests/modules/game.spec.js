@@ -56,19 +56,33 @@ describe('(Redux Module) Game', () => {
       expect(newState.activePlayer).to.equal(0)
     })
 
-    it('Should mark the winning like after a winning turn', () => {
-      let rows = helpers.createRows(3)
-      rows = helpers.setCell(rows, 0, 0, SYMBOL_X)
-      state = {...state, rows, lineSizeToWin: 2}
-      let newState = gameReducer(state, selectCell(1, 1))
-      expect(newState.winningCells).to.deep.equal([ [0, 0], [1, 1] ])
-    })
-
-    it('Should not modify state if the game is over', () => {
+    it('Should not modify state after the game is over', () => {
       state = {...state, winningCells: [ [1,1] ]}
 
       let newState = gameReducer(state, selectCell(0, 0))
       expect(newState).to.equal(state)
     })
+  })
+
+  describe('(Reducer) Winning move', () => {
+    let state
+
+    beforeEach(() => {
+      state = gameReducer(undefined, {})
+      let rows = helpers.createRows(3)
+      rows = helpers.setCell(rows, 0, 0, SYMBOL_X)
+      state = {...state, rows, lineSizeToWin: 2}
+    })
+
+    it('Should mark the winning line', () => {
+      let newState = gameReducer(state, selectCell(1, 1))
+      expect(newState.winningCells).to.deep.equal([ [0, 0], [1, 1] ])
+    })
+
+    it('Should mark the winner player', () => {
+      let newState = gameReducer(state, selectCell(1, 1))
+      expect(newState.winningPlayer).to.equal(0)
+    })
+
   })
 })

@@ -9,4 +9,8 @@
   &[data-isActive=true] {
     font-weight: bold;
   }
+
+  &[data-isWinner=true] {
+    color: red;
+  }
 }

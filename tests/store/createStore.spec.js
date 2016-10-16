@@ -9,7 +9,7 @@ describe('(Store) createStore', () => {
     store = createStore()
   })
 
-  it.only('should have default initial state from the reducer', () => {
+  it('should have default initial state from the reducer', () => {
     expect(store.getState().game).to.be.an('object')
   })
 
