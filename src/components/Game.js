@@ -6,7 +6,7 @@ export const Game = (props) => {
     <button className='btn btn-default' onClick={props.start}>
       Start
     </button>
-    <Field rows={props.state.rows} selectCell={props.selectCell}/>
+    <Field rows={props.state.rows} winningCells={props.state.winningCells} selectCell={props.selectCell}/>
   </div>
 
 }

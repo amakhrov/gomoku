@@ -30,4 +30,9 @@
   &[data-symbol="O"]::after {
     content: "o";
   }
+
+  &[data-isWinning=true] {
+    color: red;
+    background-color: #FFC8C8;
+  }
 }
