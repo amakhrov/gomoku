@@ -4,15 +4,31 @@ export default function getWinningCells (rows, lineSize, row, column) {
   const symbol = rows[row][column]
   if (symbol === SYMBOL_EMPTY) return null
 
-  const size = rows.length
-  const winning =
-    getWinningHorizontal(rows, lineSize, row, column) ||
-    getWinningVertical(rows, lineSize, row, column) ||
-    getWinningDiagonalDescending(rows, lineSize, row, column) ||
+  return combineLines([
+    getWinningHorizontal(rows, lineSize, row, column),
+    getWinningVertical(rows, lineSize, row, column),
+    getWinningDiagonalDescending(rows, lineSize, row, column),
     getWinningDiagonalAscending(rows, lineSize, row, column)
+  ])
+}
 
-  return winning
+function combineLines(lines) {
+  let allCells = {}
+  lines.forEach((line) => {
+    if (!line) return
+    line.forEach((cell) => {
+      allCells[getCellKey(cell)] = cell
+    })
+  })
 
+  let keys = Object.keys(allCells)
+  if (!keys.length) return null
+  return keys.map((key) => allCells[key])
+}
+
+function getCellKey(cell) {
+  let [row, column] = cell
+  return `${row}|${column}`
 }
 
 function getLine(rows, lineSize, row, column, deltaRow, deltaColumn) {

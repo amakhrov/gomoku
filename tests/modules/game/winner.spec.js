@@ -72,4 +72,13 @@ describe('getWinningCells', () => {
     expect(getWinningCells(rows, 2, 1, 1)).to.deep.equal(expected)
   })
 
+  it('Should combine all possible winning line', () => {
+    const rows = createRows([
+      'ox ',
+      ' xo',
+      'x  ',
+    ])
+    let expected = [ [0, 1], [1, 1], [2, 0] ]
+    expect(getWinningCells(rows, 2, 1, 1)).to.deep.equal(expected)
+  })
 })
