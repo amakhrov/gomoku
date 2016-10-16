@@ -63,5 +63,12 @@ describe('(Redux Module) Game', () => {
       let newState = gameReducer(state, selectCell(1, 1))
       expect(newState.winningCells).to.deep.equal([ [0, 0], [1, 1] ])
     })
+
+    it('Should not modify state if the game is over', () => {
+      state = {...state, winningCells: [ [1,1] ]}
+
+      let newState = gameReducer(state, selectCell(0, 0))
+      expect(newState).to.equal(state)
+    })
   })
 })

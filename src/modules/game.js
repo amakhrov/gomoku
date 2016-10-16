@@ -27,6 +27,8 @@ export const actions = {
 
 const ACTION_HANDLERS = {
   [SELECT_CELL]: (state, action) => {
+    if (state.winningCells) return state
+
     let {row, column} = action.payload
     let {rows} = state
     if (!helpers.isCellEmpty(rows, row, column)) return state

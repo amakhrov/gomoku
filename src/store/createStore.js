@@ -29,8 +29,8 @@ export default (initialState = {}) => {
   )
 
   if (module.hot) {
-    module.hot.accept('../modules/game', () => {
-      const makeRootReducer = require('../modules/game').default
+    module.hot.accept('./reducers', () => {
+      const makeRootReducer = require('./reducers').default
       store.replaceReducer(makeRootReducer())
     })
   }
