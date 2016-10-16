@@ -50,8 +50,8 @@ const ACTION_HANDLERS = {
 const defaultFieldSize = 20
 export const initialState = resetGame({
   players: [
-    {name: 'Pasha', symbol: SYMBOL_X},
-    {name: 'Anti', symbol: SYMBOL_O},
+    {name: 'Pasha', symbol: SYMBOL_O},
+    {name: 'Anti', symbol: SYMBOL_X},
   ],
   lineSizeToWin: 5,
 }, defaultFieldSize)
