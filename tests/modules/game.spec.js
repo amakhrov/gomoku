@@ -63,13 +63,12 @@ describe('(Redux Module) Game', () => {
     })
 
     it('Should not modify state after the game is over', () => {
-      state = {...state, winningCells: [ [1,1] ]}
+      state = {...state, winningCells: [ [1, 1] ]}
 
       let newState = gameReducer(state, selectCell(0, 0))
       expect(newState).to.equal(state)
     })
   })
-
 
   describe('(Reducer) CHANGE_FIELD_SIZE', () => {
     it('Should change the field size in the state', () => {
@@ -93,7 +92,6 @@ describe('(Redux Module) Game', () => {
       // emulate redux-thunk handler
       let dispatch = action => {
         state = gameReducer(state, action)
-
       }
       start()(dispatch)
 
@@ -121,6 +119,5 @@ describe('(Redux Module) Game', () => {
       let newState = gameReducer(state, selectCell(1, 1))
       expect(newState.winningPlayer).to.equal(0)
     })
-
   })
 })

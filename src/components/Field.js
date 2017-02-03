@@ -18,7 +18,7 @@ export const Field = (props) => {
 
   const isWinning = (row, col) => getCellKey(row, col) in winning
 
-  return <div style={{ margin: '0 auto' }} >
+  return <div style={{margin: '0 auto'}} >
     {rows.map((row, i) => (
       <div key={i} className={styles.row}>
         {row.map((symbol, j) => {
@@ -42,7 +42,7 @@ export const Field = (props) => {
 Field.propTypes = {
   rows: React.PropTypes.arrayOf(React.PropTypes.array).isRequired,
   winningCells: React.PropTypes.arrayOf(React.PropTypes.array),
-  selectCell : React.PropTypes.func.isRequired,
+  selectCell : React.PropTypes.func.isRequired
 }
 
 export default Field

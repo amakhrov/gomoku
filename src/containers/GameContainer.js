@@ -1,6 +1,6 @@
-import { connect } from 'react-redux'
-import { start, selectCell, changeFieldSize } from '../modules/game'
-import { ActionCreators as HistoryActions } from 'redux-undo';
+import {connect} from 'react-redux'
+import {start, selectCell, changeFieldSize} from '../modules/game'
+import {ActionCreators as HistoryActions} from 'redux-undo'
 
 import Game from '../components/Game'
 

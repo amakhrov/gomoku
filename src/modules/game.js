@@ -1,4 +1,4 @@
-import undoable, {ActionCreators as HistoryActions} from 'redux-undo';
+import undoable, {ActionCreators as HistoryActions} from 'redux-undo'
 import {SYMBOL_X, SYMBOL_O} from './game/constants'
 import helpers from './game/rows-helpers'
 import getWinningCells from './game/winner'
@@ -14,13 +14,11 @@ export function selectCell (row, column) {
   }
 }
 
-
 export function start () {
   return dispatch => {
     dispatch({type: GAME_START})
     dispatch(HistoryActions.clearHistory())
   }
-
 }
 
 export function changeFieldSize (fieldSize) {
@@ -29,7 +27,6 @@ export function changeFieldSize (fieldSize) {
     payload: {fieldSize}
   }
 }
-
 
 export const actions = {
   selectCell,
@@ -60,7 +57,6 @@ const ACTION_HANDLERS = {
   [CHANGE_FIELD_SIZE]: (state, {payload: {fieldSize}}) => ({...state, fieldSize})
 }
 
-
 export const initialState = resetGame({
   players: [
     {name: 'Pasha', symbol: SYMBOL_O},
@@ -70,7 +66,7 @@ export const initialState = resetGame({
   lineSizeToWin: 5,
 })
 
-function resetGame(state) {
+function resetGame (state) {
   return {
     ...state,
     rows: helpers.createRows(state.fieldSize),

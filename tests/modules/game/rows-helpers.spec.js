@@ -6,7 +6,7 @@ import {
   SYMBOL_EMPTY,
 } from 'modules/game/constants'
 
-function createRows(stringLines) {
+function createRows (stringLines) {
   const mapping = {
     ' ': SYMBOL_EMPTY,
     'x': SYMBOL_X,
@@ -18,7 +18,6 @@ function createRows(stringLines) {
 }
 
 describe('(Game logic)', () => {
-
   describe('createRows', () => {
     it('Should be a function.', () => {
       expect(helpers.createRows).to.be.a('function')
@@ -83,10 +82,9 @@ describe('(Game logic)', () => {
 
     it('Should not mutate original rows', () => {
       let before = JSON.stringify(rows)
-      let newRows = helpers.setCell(rows, 1, 1, SYMBOL_X)
+      helpers.setCell(rows, 1, 1, SYMBOL_X)
       let after = JSON.stringify(rows)
       expect(after).to.equal(before)
     })
   })
-
 })

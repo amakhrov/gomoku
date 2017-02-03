@@ -12,5 +12,4 @@ describe('(Store) createStore', () => {
   it('should have default initial state from the reducer', () => {
     expect(store.getState().game).to.be.an('object')
   })
-
 })

@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react'
-import { Provider } from 'react-redux'
+import React, {Component, PropTypes} from 'react'
+import {Provider} from 'react-redux'
 import GameContainer from './GameContainer'
 
 class AppContainer extends Component {
@@ -14,7 +14,7 @@ class AppContainer extends Component {
   render () {
     return (
       <Provider store={this.props.store}>
-        <GameContainer/>
+        <GameContainer />
       </Provider>
     )
   }

@@ -12,7 +12,7 @@ export default function getWinningCells (rows, lineSize, row, column) {
   ])
 }
 
-function combineLines(lines) {
+function combineLines (lines) {
   let allCells = {}
   lines.forEach((line) => {
     if (!line) return
@@ -26,12 +26,12 @@ function combineLines(lines) {
   return keys.map((key) => allCells[key])
 }
 
-function getCellKey(cell) {
+function getCellKey (cell) {
   let [row, column] = cell
   return `${row}|${column}`
 }
 
-function getLine(rows, lineSize, row, column, deltaRow, deltaColumn) {
+function getLine (rows, lineSize, row, column, deltaRow, deltaColumn) {
   const symbol = rows[row][column]
   const size = rows.length
 
@@ -80,18 +80,18 @@ function getLine(rows, lineSize, row, column, deltaRow, deltaColumn) {
   return winning
 }
 
-function getWinningHorizontal(rows, lineSize, row, column) {
+function getWinningHorizontal (rows, lineSize, row, column) {
   return getLine(rows, lineSize, row, column, 0, 1)
 }
 
-function getWinningVertical(rows, lineSize, row, column) {
+function getWinningVertical (rows, lineSize, row, column) {
   return getLine(rows, lineSize, row, column, 1, 0)
 }
 
-function getWinningDiagonalDescending(rows, lineSize, row, column) {
+function getWinningDiagonalDescending (rows, lineSize, row, column) {
   return getLine(rows, lineSize, row, column, 1, 1)
 }
 
-function getWinningDiagonalAscending(rows, lineSize, row, column) {
+function getWinningDiagonalAscending (rows, lineSize, row, column) {
   return getLine(rows, lineSize, row, column, 1, -1)
 }

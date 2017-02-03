@@ -19,7 +19,7 @@ Player.propTypes = {
 export const Status = (props) => (
   <div>
     {props.players.map((player, i) => {
-      const isWinner = i === props.winningPlayer;
+      const isWinner = i === props.winningPlayer
       const isActive = i === props.activePlayer
       const playerProps = {
         ...player,

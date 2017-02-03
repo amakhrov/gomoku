@@ -6,8 +6,7 @@ import {
   SYMBOL_EMPTY,
 } from 'modules/game/constants'
 
-
-function createRows(stringLines) {
+function createRows (stringLines) {
   const mapping = {
     ' ': SYMBOL_EMPTY,
     'x': SYMBOL_X,

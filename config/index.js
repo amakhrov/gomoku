@@ -55,8 +55,8 @@ const config = {
   // Test Configuration
   // ----------------------------------
   coverage_reporters : [
-    { type : 'text-summary' },
-    { type : 'lcov', dir : 'coverage' }
+    {type : 'text-summary'},
+    {type : 'lcov', dir : 'coverage'}
   ]
 }
 
