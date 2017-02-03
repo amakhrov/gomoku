@@ -1,6 +1,8 @@
 import {
   selectCell,
-  gameReducer
+  changeFieldSize,
+  start,
+  gameReducer,
 } from 'modules/game'
 
 import {SYMBOL_X, SYMBOL_O} from 'modules/game/constants'
@@ -65,6 +67,37 @@ describe('(Redux Module) Game', () => {
 
       let newState = gameReducer(state, selectCell(0, 0))
       expect(newState).to.equal(state)
+    })
+  })
+
+
+  describe('(Reducer) CHANGE_FIELD_SIZE', () => {
+    it('Should change the field size in the state', () => {
+      let state = {
+        fieldSize: 3,
+        rows: helpers.createRows(3)
+      }
+
+      let newState = gameReducer(state, changeFieldSize(5))
+      expect(newState.fieldSize).to.equal(5)
+    })
+  })
+
+  describe('(Reducer) RESET', () => {
+    it('Should reset the rows using the current field size', () => {
+      let state = {
+        fieldSize: 5,
+        rows: helpers.createRows(3)
+      }
+
+      // emulate redux-thunk handler
+      let dispatch = action => {
+        state = gameReducer(state, action)
+
+      }
+      start()(dispatch)
+
+      expect(state.rows.length).to.equal(5)
     })
   })
 

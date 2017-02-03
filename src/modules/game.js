@@ -1,10 +1,11 @@
-import undoable from 'redux-undo';
+import undoable, {ActionCreators as HistoryActions} from 'redux-undo';
 import {SYMBOL_X, SYMBOL_O} from './game/constants'
 import helpers from './game/rows-helpers'
 import getWinningCells from './game/winner'
 
 export const SELECT_CELL = 'SELECT_CELL'
 export const GAME_START = 'GAME_START'
+export const CHANGE_FIELD_SIZE = 'CHANGE_FIELD_SIZE'
 
 export function selectCell (row, column) {
   return {
@@ -15,15 +16,25 @@ export function selectCell (row, column) {
 
 
 export function start () {
+  return dispatch => {
+    dispatch({type: GAME_START})
+    dispatch(HistoryActions.clearHistory())
+  }
+
+}
+
+export function changeFieldSize (fieldSize) {
   return {
-    type: GAME_START
+    type: CHANGE_FIELD_SIZE,
+    payload: {fieldSize}
   }
 }
 
 
 export const actions = {
   selectCell,
-  start
+  start,
+  changeFieldSize
 }
 
 const ACTION_HANDLERS = {
@@ -44,22 +55,25 @@ const ACTION_HANDLERS = {
     return {...state, rows, activePlayer, winningCells, winningPlayer}
   },
 
-  [GAME_START]: (state, action) => resetGame(state, state.rows.length)
+  [GAME_START]: (state, action) => resetGame(state),
+
+  [CHANGE_FIELD_SIZE]: (state, {payload: {fieldSize}}) => ({...state, fieldSize})
 }
 
-const defaultFieldSize = 20
+
 export const initialState = resetGame({
   players: [
     {name: 'Pasha', symbol: SYMBOL_O},
     {name: 'Anti', symbol: SYMBOL_X},
   ],
+  fieldSize: 20,
   lineSizeToWin: 5,
-}, defaultFieldSize)
+})
 
-function resetGame(state, fieldSize) {
+function resetGame(state) {
   return {
     ...state,
-    rows: helpers.createRows(fieldSize),
+    rows: helpers.createRows(state.fieldSize),
     activePlayer: 0,
     winningCells: null
   }
@@ -72,5 +86,5 @@ export function gameReducer (state = initialState, action) {
 }
 
 export default undoable(gameReducer, {
-  initTypes: [GAME_START]
+  debug: true
 })

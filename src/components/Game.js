@@ -9,10 +9,22 @@ const Button = (props) =>  (
 
 export const Game = (props) => {
   return   <div style={{ margin: '0 auto' }} >
-    <Status {...props.state} />
-    <Button onClick={props.start}>Restart</Button>
-    <Button onClick={props.undo} disabled={!props.canUndo}>Undo</Button>
-    <Button onClick={props.redo} disabled={!props.canRedo}>Redo</Button>
+    <div className="header">
+      <Status {...props.state} />
+      <div className={styles.controlsHistory}>
+        <Button onClick={props.undo} disabled={!props.canUndo}>Undo</Button>
+        <Button onClick={props.redo} disabled={!props.canRedo}>Redo</Button>
+      </div>
+      <div className={styles.controlsGame}>
+        <label htmlFor="fieldSize">Field Size:</label>
+        <select id="fieldSize" value={props.state.fieldSize} onChange={(e) => props.changeFieldSize(+e.target.value)}>
+          <option value="20">20</option>
+          <option value="40">40</option>
+          <option value="60">60</option>
+        </select>
+        <Button onClick={props.start}>Restart</Button>
+      </div>
+    </div>
     <Field rows={props.state.rows} winningCells={props.state.winningCells} selectCell={props.selectCell}/>
   </div>
 
@@ -24,6 +36,7 @@ Game.propTypes = {
 
   start     : React.PropTypes.func.isRequired,
   selectCell : React.PropTypes.func.isRequired,
+  changeFieldSize : React.PropTypes.func.isRequired,
   undo     : React.PropTypes.func.isRequired,
   redo : React.PropTypes.func.isRequired,
 }
