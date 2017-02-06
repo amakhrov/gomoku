@@ -119,5 +119,10 @@ describe('(Redux Module) Game', () => {
       let newState = gameReducer(state, selectCell(1, 1))
       expect(newState.winningPlayer).to.equal(0)
     })
+
+    it('Should not move the turn to the next player', () => {
+      let newState = gameReducer(state, selectCell(1, 1))
+      expect(newState.activePlayer).to.equal(0)
+    })
   })
 })

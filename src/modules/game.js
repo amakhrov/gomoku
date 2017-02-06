@@ -46,8 +46,9 @@ const ACTION_HANDLERS = {
     rows = helpers.setCell(rows, row, column, currentSymbol)
 
     let winningCells = getWinningCells(rows, state.lineSizeToWin, row, column)
-    let winningPlayer = winningCells ? state.activePlayer : null
-    let activePlayer = (state.activePlayer + 1) % state.players.length
+    let isGameOver = !!winningCells
+    let winningPlayer = isGameOver ? state.activePlayer : null
+    let activePlayer = isGameOver ? state.activePlayer : (state.activePlayer + 1) % state.players.length
 
     return {...state, rows, activePlayer, winningCells, winningPlayer}
   },
