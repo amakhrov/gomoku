@@ -4,8 +4,8 @@ import styles from './Status.scss'
 const Player = (props) => (
   <div className={styles.player} data-isActive={props.isActive} data-isWinner={props.isWinner}>
     <span>{props.name}</span>
-    { }
-    (<span>{props.symbol}</span>)
+    {' '}
+    (<span className={styles.symbol} data-symbol={props.symbol}>{props.symbol}</span>)
   </div>
 )
 

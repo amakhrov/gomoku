@@ -1,3 +1,5 @@
+@import "variables";
+
 :local(.row) {
   display: flex;
 }
@@ -25,10 +27,12 @@
 
   &[data-symbol="X"]::after {
     content: "x";
+    color: $colorSymbolX;
   }
 
   &[data-symbol="O"]::after {
     content: "o";
+    color: $colorSymbolO;
   }
 
   &[data-isWinning=true] {

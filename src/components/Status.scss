@@ -1,16 +1,31 @@
+@import "variables";
+
 :local(.player) {
   display: inline-block;
   width: 100px;
+  font-weight: bold;
 
   &[data-isActive=false] {
     color: grey;
   }
 
-  &[data-isActive=true] {
-    font-weight: bold;
+  &[data-isActive=false] {
+    opacity: 0.6;
   }
 
   &[data-isWinner=true] {
     color: red;
+  }
+}
+
+:local(.symbol) {
+  font-weight: bold;
+
+  &[data-symbol="X"] {
+    color: $colorSymbolX;
+  }
+
+  &[data-symbol="O"] {
+    color: $colorSymbolO;
   }
 }
