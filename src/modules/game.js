@@ -59,8 +59,8 @@ const ACTION_HANDLERS = {
 
 export const initialState = resetGame({
   players: [
-    {name: 'Pasha', symbol: SYMBOL_O},
-    {name: 'Anti', symbol: SYMBOL_X},
+    {name: 'Player 1', symbol: SYMBOL_O},
+    {name: 'Player 2', symbol: SYMBOL_X},
   ],
   fieldSize: 20,
   lineSizeToWin: 5,
